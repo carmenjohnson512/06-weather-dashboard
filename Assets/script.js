@@ -10,7 +10,7 @@ function initPage() {
     const currentUVEl = document.getElementById("UV-index");
     const historyEl = document.getElementById("history");
     let searchHistory = JSON.parse(localStorage.getItem("search")) || [];
-    console.log(searchHistory);
+    // console.log(searchHistory);
     
 
     const APIKey = "0dd903385007dcf679d5824d5b9e348c";
@@ -41,8 +41,10 @@ function initPage() {
         let lat = response.data.coord.lat;
         let lon = response.data.coord.lon;
         let UVQueryURL = "https://api.openweathermap.org/data/2.5/uvi/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + APIKey + "&cnt=1";
-        axios.get(UVQueryURL)
-        .then(function(response){
+        $.ajax({
+            URL: UVQueryURL,
+            method: "GET"
+        }).then(function(response){
             let UVIndex = document.createElement("span");
             UVIndex.setAttribute("class","badge badge-danger");
             UVIndex.innerHTML = response.data[0].value;
@@ -52,8 +54,10 @@ function initPage() {
 //  Using saved city name, execute a 5-day forecast get request from open weather map api
         let cityID = response.data.id;
         let forecastQueryURL = "https://api.openweathermap.org/data/2.5/forecast?id=" + cityID + "&appid=" + APIKey;
-        axios.get(forecastQueryURL)
-        .then(function(response){
+        $.ajax({
+            URL: forecastQueryURL,
+            method: "GET"
+           }).then(function(response){
 //  Parse response to display forecast for next 5 days underneath current conditions
             console.log(response);
             const forecastEls = document.querySelectorAll(".forecast");
