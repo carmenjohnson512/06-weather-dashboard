@@ -25,29 +25,44 @@
         url: queryURL,
         method: "GET"
        }).then(function(response){
-            console.log('this is the wetahter data',response);
-            console.log('temp', response.main.temp)
-            console.log('humidity', response.main.humidity)
-            console.log('wind speed', response.wind.speed)
-        nameEl.text(response.name)
-        dateEl.text(moment().format('MMMM Do YYYY'))
-        currentPicEl.attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png")
-        currentTempEl.text("Temperature: " + response.main.temp + " Farenheit");
-        currentHumidityEl.text("Humidity: " + response.main.humidity + "%");
-        currentWindEl.text("Wind Speed: " + response.wind.speed + " MPH");
-        
-        console.log("current temp?"
-        )
-        forecast(cityName)
+            // console.log('this is the wetahter data',response);
+            // console.log('temp', response.main.temp)
+            // console.log('humidity', response.main.humidity)
+            // console.log('wind speed', response.wind.speed)
+            nameEl.text(response.name)
+            dateEl.text(moment().format('MMMM Do YYYY'))
+            currentPicEl.attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png")
+            currentTempEl.text("Temperature: " + response.main.temp + " Farenheit");
+            currentHumidityEl.text("Humidity: " + response.main.humidity + "%");
+            currentWindEl.text("Wind Speed: " + response.wind.speed + " MPH");
+            getUVIndex(cityName);
+            forecast(cityName);
         });
-};
+        
+        function getUVIndex () {
+            let lat = response.lat;
+            let lon = response.lon;
+            let UVQueryURL = "https://api.openweathermap.org/data/2.5/uvi?appid=0dd903385007dcf679d5824d5b9e348c&lat=" + lat + "&lon=" + lon;
+            $.ajax({
+                url: UVQueryURL,
+                method: "GET"
+            }).then(function(response){
+                    let UVIndex = $("<span>");
+                    UVIndex.attr("class","badge badge-danger");
+                    UVIndex.text(response.value);
+                    currentUVEl.text("UV Index: ", UVIndex);
+                    console.log("is this UV Index?", UVIndex)
+        
+            }); 
+        };  
+    };
 
 
 
-function forecast(city) {
+function forecast(inputEl) {
     // do another ajax call and append foracast stuff
 //  Using saved city name, execute a current condition get request from open weather map api
-    let forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=" + APIKey;
+    let forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + inputEl + "&units=imperial&appid=" + APIKey;
     $.ajax({
         url: forecastURL,
         method: "GET"
