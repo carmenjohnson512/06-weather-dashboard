@@ -88,7 +88,7 @@ function forecast(inputEl) {
             weather: fiveDayForecast[0].weather[0].icon,
             temp: "Temp: " + fiveDayForecast[0].main.temp + " °F",
             humidity: "Humidity: " + fiveDayForecast[0].main.humidity + "%",
-            windSpeed: "Wind Speed: " + fiveDayForecast[0].wind.speed + " MPH wind speed",
+            windSpeed: "Wind Speed: " + fiveDayForecast[0].wind.speed + " MPH",
         };
        
         let forecastDate1 = $("<div>");
@@ -115,7 +115,7 @@ function forecast(inputEl) {
             weather: fiveDayForecast[1].weather[0].icon,
             temp: "Temp: " + fiveDayForecast[1].main.temp + " °F",
             humidity: "Humidity: " + fiveDayForecast[1].main.humidity + " %",
-            windSpeed: "Wind Speed: " + fiveDayForecast[1].wind.speed + " MPH wind speed",
+            windSpeed: "Wind Speed: " + fiveDayForecast[1].wind.speed + " MPH",
         }; 
        
         let forecastDate2 = $("<div>");
@@ -141,7 +141,7 @@ function forecast(inputEl) {
             weather: fiveDayForecast[2].weather[0].icon,
             temp: "Temp: " + fiveDayForecast[2].main.temp + " °F",
             humidity: "Humidity: " + fiveDayForecast[2].main.humidity + " %",
-            windSpeed: "Wind Speed: " + fiveDayForecast[2].wind.speed + " MPH wind speed",
+            windSpeed: "Wind Speed: " + fiveDayForecast[2].wind.speed + " MPH",
         };  console.log("is this the right date?", forecastDay3.date)
 
        
@@ -168,7 +168,7 @@ function forecast(inputEl) {
             weather: fiveDayForecast[3].weather[0].icon,
             temp: "Temp: " + fiveDayForecast[3].main.temp + " °F",
             humidity: "Humidity: " + fiveDayForecast[3].main.humidity + "%",
-            windSpeed: "Wind Speed: " + fiveDayForecast[3].wind.speed + " MPH wind speed",
+            windSpeed: "Wind Speed: " + fiveDayForecast[3].wind.speed + " MPH",
         };
        
         let forecastDate4 = $("<div>");
