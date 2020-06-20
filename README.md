@@ -9,4 +9,4 @@ As a traveler, I want a dashboard that displays the current weather for searched
 
 ![weather dashboard](https://github.com/carmenjohnson512/06-weather-dashboard/blob/master/Assets/weatherDashboardScreenshot.jpeg?raw=true)
 
-Link to application: https://carmenjohnson512.github.io/work-day-scheduler/
+Link to application: https://carmenjohnson512.github.io/06-weather-dashboard/
